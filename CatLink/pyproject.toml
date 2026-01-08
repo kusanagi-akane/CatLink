@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "CatLink"
+version = "0.1.0"
+description = "A minimal, framework-agnostic Lavalink v3,4 client develope by kusanagi_akane"
+requires-python = ">=3.9"
+dependencies = [
+  "aiohttp",
+  "websockets"
+]
