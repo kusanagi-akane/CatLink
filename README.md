@@ -186,3 +186,101 @@ CatLink/
 ## 授權
 
 由 kusanagi_akane 開發
+---
+
+# SimpleBot - 音樂機器人範例
+
+基於 CatLink 的完整 Discord 音樂機器人，支援 Slash Commands 和 Components V2 UI。
+
+## 🎵 功能
+
+- `/play <query>` - 播放音樂（支援搜尋或 URL）
+- `/skip` - 跳過當前歌曲
+- `/stop` - 停止播放並離開頻道
+- `/pause` - 暫停播放
+- `/resume` - 恢復播放
+- `/loop` - 切換單曲循環
+- `/volume <0-1000>` - 調整音量
+- `/nowplaying` - 顯示正在播放（含控制面板）
+- `/queue` - 查看播放清單（Components V2 UI）
+- `/setpanel` - 設定自動面板頻道
+
+## 📦 安裝
+
+1. 安裝依賴：
+```bash
+pip install -r requirements.txt
+```
+
+2. 設定 `config.py`：
+```python
+# config.py
+
+TOKEN = "your_bot_token"           # Discord Bot Token
+APPLICATION_ID = "your_app_id"     # Application ID
+
+LAVALINK_HOST = "localhost"        # Lavalink 伺服器地址
+LAVALINK_PORT = 2333               # Lavalink 伺服器端口
+LAVALINK_PASSWORD = "youshallnotpass"  # Lavalink 密碼
+```
+
+3. 啟動機器人：
+```bash
+python main.py
+```
+
+## 📁 專案結構
+
+```
+SimpleBot/
+├── main.py          # 機器人主程式
+├── config.py        # 設定檔
+└── cogs/
+    └── music.py     # 音樂指令模組
+```
+
+## 🎛️ UI 元件
+
+### 播放面板 (PlayerControlsView)
+- ⏯ 暫停/播放
+- ⏭ 跳過
+- ⏹ 停止
+- 🔉 -10 / 🔊 +10 音量控制
+- 🔁 循環開關
+
+### 播放清單 (QueueLayoutView)
+使用 Discord Components V2：
+- Container + TextDisplay 顯示佇列
+- ActionRow + Select 選擇刪除歌曲
+- ActionRow + Button 分頁控制
+
+## ⚙️ 需求
+
+- Python >= 3.10
+- discord.py >= 2.6 (Components V2 支援)
+- Lavalink Server v4
+- CatLink 套件
+
+## 🔧 Lavalink 設定
+
+需要運行 Lavalink 伺服器，建議設定：
+
+```yaml
+# application.yml
+server:
+  port: 2333
+  address: 0.0.0.0
+
+lavalink:
+  server:
+    password: "youshallnotpass"
+    sources:
+      youtube: true
+      soundcloud: true
+    # 如需 Spotify，安裝 LavaSrc 插件
+```
+
+## 注意事項
+
+1. **Lavalink v4** 推薦使用，v3 也支援但部分 API 不同
+2. **LavaLink LavaSrc插件** 可支援 Spotify、Apple Music 等來源
