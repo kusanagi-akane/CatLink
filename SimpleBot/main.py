@@ -1,5 +1,5 @@
 import discord
-import config
+import SimpleBot.config as config
 import logging
 from discord.ext import commands
 from CatLink import LavalinkClient
