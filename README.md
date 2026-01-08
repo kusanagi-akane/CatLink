@@ -15,12 +15,12 @@
 ## 安裝
 
 ```bash
-pip install -e ./CatLink
+pip install CatLink
 ```
 
 或直接在 `requirements.txt` 中加入：
 ```
--e ./CatLink
+CatLink
 ```
 
 ## 依賴
